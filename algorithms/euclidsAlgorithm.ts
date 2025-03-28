@@ -1,7 +1,15 @@
 /* From The Art of Computer Programming, Volume 1, Section 1.2.1 */
 
 function getGCD(m: number, n: number): number {
+	if (m === 0 && n === 0) {
+		throw new Error("GCD is undefined when both numbers are 0");
+	}
+
+	if (m === 0) return n;
 	if (n === 0) return m;
+
+	if (n > m) return getGCD(n, m);
+
 	const remainder = m % n;
 	if (remainder === 0) return n;
 	return getGCD(n, remainder);
